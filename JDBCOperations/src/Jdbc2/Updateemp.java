@@ -1,0 +1,25 @@
+package Jdbc2;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class Updateemp {
+ public static void main(String[] args) {
+	
+	 try {
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		
+		Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/mona_jdbc","root","Tiger");
+		
+		PreparedStatement ps=con.prepareStatement("update emp set name='mona' where id=2");
+		
+		ps.execute();
+		System.out.println("data updated");
+	} catch (ClassNotFoundException | SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+}
+}
